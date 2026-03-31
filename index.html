@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>★☆★ iPhone5s 完全攻略大百科 ★☆★ by APPLE最強伝説</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    :root {
+      --neon-pink: #ff00ff;
+      --neon-cyan: #00ffff;
+      --neon-yellow: #ffff00;
+      --neon-green: #00ff00;
+      --neon-orange: #ff6600;
+      --hot-pink: #ff0099;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #000011;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(255,0,255,0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(0,255,255,0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(255,255,0,0.05) 0%, transparent 50%);
+      color: #ffffff;
+      font-family: 'MS Gothic', 'ＭＳ ゴシック', monospace;
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+
+    /* ====== 星空背景 ====== */
+    #stars-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle var(--dur) infinite alternate;
+    }
+    @keyframes twinkle {
+      0% { opacity: 0.1; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* ====== メインラッパー ====== */
+    #wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+
+    /* ====== ヘッダー ====== */
+    #header {
+      text-align: center;
+      padding: 20px 0 10px;
+      border: 4px solid;
+      border-image: linear-gradient(90deg, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00) 1;
+      animation: borderRainbow 2s linear infinite;
+      margin-bottom: 10px;
+      background: rgba(0,0,0,0.7);
+      position: relative;
+      overflow: hidden;
+    }
+    #header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+      animation: headerShine 3s infinite;
+    }
+    @keyframes headerShine {
+      0% { left: -100%; }
+      100% { left: 200%; }
+    }
+    @keyframes borderRainbow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    #site-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(14px, 3vw, 28px);
+      background: linear-gradient(90deg, #ff0000, #ff7700, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+      background-size: 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: rainbowText 2s linear infinite;
+      text-shadow: none;
+      filter: drop-shadow(0 0 8px rgba(255,0,255,0.8));
+      line-height: 1.6;
+    }
+    @keyframes rainbowText {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    .blink {
+      animation: blink 0.7s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { visibility: visible; }
+      50% { visibility: hidden; }
+    }
+
+    .blink-slow {
+      animation: blink 1.2s step-end infinite;
+    }
+
+    /* ====== マーキー ====== */
+    .marquee-wrapper {
+      overflow: hidden;
+      background: linear-gradient(90deg, #000, #111, #000);
+      border-top: 2px solid var(--neon-yellow);
+      border-bottom: 2px solid var(--neon-yellow);
+      padding: 6px 0;
+      margin: 8px 0;
+    }
+    .marquee-inner {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marqueeScroll 18s linear infinite;
+      color: var(--neon-yellow);
+      font-size: 14px;
+      font-weight: bold;
+    }
+    @keyframes marqueeScroll {
+      0% { transform: translateX(100vw); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* ====== カウンター ====== */
+    #counter-section {
+      text-align: center;
+      margin: 8px 0;
+    }
+    #visitor-counter {
+      display: inline-block;
+      background: #000;
+      border: 2px inset #888;
+      padding: 4px 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 20px;
+      color: #00ff00;
+      letter-spacing: 4px;
+      text-shadow: 0 0 8px #00ff00;
+    }
+
+    /* ====== ナビゲーション ====== */
+    #nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin: 12px 0;
+    }
+    .nav-btn {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      padding: 8px 14px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      animation: btnPulse 1.5s ease-in-out infinite alternate;
+      text-transform: uppercase;
+    }
+    .nav-btn:nth-child(1) { background: #ff0066; color: #fff; }
+    .nav-btn:nth-child(2) { background: #ff9900; color: #000; }
+    .nav-btn:nth-child(3) { background: #00ff66; color: #000; }
+    .nav-btn:nth-child(4) { background: #00ccff; color: #000; }
+    .nav-btn:nth-child(5) { background: #cc00ff; color: #fff; }
+    @keyframes btnPulse {
+      0% { transform: scale(1); box-shadow: 0 0 5px currentColor; }
+      100% { transform: scale(1.05); box-shadow: 0 0 15px currentColor; }
+    }
+    .nav-btn:hover {
+      animation: none;
+      transform: scale(1.1) rotate(-2deg);
+      filter: brightness(1.3);
+    }
+
+    /* ====== セクション共通 ====== */
+    .section {
+      border: 3px double;
+      margin: 14px 0;
+      padding: 16px;
+      background: rgba(0,0,0,0.75);
+      position: relative;
+    }
+    .section-pink { border-color: var(--neon-pink); box-shadow: 0 0 15px var(--neon-pink), inset 0 0 15px rgba(255,0,255,0.05); }
+    .section-cyan { border-color: var(--neon-cyan); box-shadow: 0 0 15px var(--neon-cyan), inset 0 0 15px rgba(0,255,255,0.05); }
+    .section-yellow { border-color: var(--neon-yellow); box-shadow: 0 0 15px var(--neon-yellow), inset 0 0 15px rgba(255,255,0,0.05); }
+    .section-green { border-color: var(--neon-green); box-shadow: 0 0 15px var(--neon-green), inset 0 0 15px rgba(0,255,0,0.05); }
+    .section-orange { border-color: var(--neon-orange); box-shadow: 0 0 15px var(--neon-orange), inset 0 0 15px rgba(255,102,0,0.05); }
+
+    .section-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(11px, 2vw, 16px);
+      margin-bottom: 14px;
+      display: inline-block;
+      padding: 6px 12px;
+      position: relative;
+    }
+    .section-title::before { content: '▶ '; }
+    .section-title::after { content: ' ◀'; }
+    .title-pink { color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); background: rgba(255,0,255,0.1); }
+    .title-cyan { color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); background: rgba(0,255,255,0.1); }
+    .title-yellow { color: var(--neon-yellow); text-shadow: 0 0 10px var(--neon-yellow); background: rgba(255,255,0,0.1); }
+    .title-green { color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); background: rgba(0,255,0,0.1); }
+    .title-orange { color: var(--neon-orange); text-shadow: 0 0 10px var(--neon-orange); background: rgba(255,102,0,0.1); }
+
+    /* ====== iPhoneビジュアル ====== */
+    #hero {
+      text-align: center;
+      padding: 30px 20px;
+    }
+    .iphone-frame {
+      display: inline-block;
+      width: 160px;
+      height: 290px;
+      background: linear-gradient(145deg, #d0d0d0, #a0a0a0, #c8c8c8, #888, #c0c0c0);
+      border-radius: 26px;
+      border: 3px solid #777;
+      position: relative;
+      box-shadow:
+        0 0 30px rgba(255,255,255,0.3),
+        0 0 60px rgba(0,200,255,0.2),
+        inset 0 2px 4px rgba(255,255,255,0.4),
+        8px 8px 20px rgba(0,0,0,0.8);
+      animation: phoneFloat 3s ease-in-out infinite, phoneGlow 2s ease-in-out infinite alternate;
+    }
+    @keyframes phoneFloat {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-15px) rotate(2deg); }
+    }
+    @keyframes phoneGlow {
+      0% { box-shadow: 0 0 30px rgba(255,255,255,0.3), 0 0 60px rgba(255,0,255,0.3), inset 0 2px 4px rgba(255,255,255,0.4), 8px 8px 20px rgba(0,0,0,0.8); }
+      100% { box-shadow: 0 0 40px rgba(255,255,255,0.5), 0 0 80px rgba(0,255,255,0.4), inset 0 2px 4px rgba(255,255,255,0.4), 8px 8px 20px rgba(0,0,0,0.8); }
+    }
+    .iphone-screen {
+      position: absolute;
+      top: 40px; left: 14px; right: 14px; bottom: 50px;
+      background: #111;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .screen-wallpaper {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #533483);
+      background-size: 300% 300%;
+      animation: wallpaperAnim 4s ease infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    @keyframes wallpaperAnim {
+      0%, 100% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
+    }
+    .screen-time {
+      color: white;
+      font-size: 22px;
+      font-weight: 300;
+      text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+    .screen-date {
+      color: rgba(255,255,255,0.8);
+      font-size: 8px;
+    }
+    .screen-icons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      padding: 0 4px;
+    }
+    .app-icon {
+      width: 18px; height: 18px;
+      border-radius: 4px;
+    }
+    .iphone-home-btn {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #bbb, #888, #aaa);
+      border: 2px solid #666;
+      box-shadow: inset 0 1px 2px rgba(255,255,255,0.5);
+    }
+    .iphone-speaker {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px; height: 5px;
+      background: #555;
+      border-radius: 3px;
+    }
+    .iphone-camera {
+      position: absolute;
+      top: 14px;
+      right: 35px;
+      width: 8px; height: 8px;
+      background: #333;
+      border-radius: 50%;
+      border: 1px solid #222;
+    }
+
+    /* ====== スペック表 ====== */
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .spec-table tr {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.2s;
+    }
+    .spec-table tr:hover { background: rgba(255,255,0,0.05); }
+    .spec-table td {
+      padding: 8px 10px;
+      vertical-align: top;
+    }
+    .spec-table td:first-child {
+      color: var(--neon-yellow);
+      font-weight: bold;
+      white-space: nowrap;
+      width: 40%;
+    }
+    .spec-table td:last-child { color: #ddd; }
+    .spec-highlight {
+      color: var(--neon-green) !important;
+      text-shadow: 0 0 6px var(--neon-green);
+    }
+
+    /* ====== レインボーバー ====== */
+    .rainbow-bar {
+      height: 4px;
+      background: linear-gradient(90deg, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+      background-size: 200%;
+      animation: rainbowSlide 2s linear infinite;
+      margin: 10px 0;
+    }
+    @keyframes rainbowSlide {
+      0% { background-position: 0%; }
+      100% { background-position: 200%; }
+    }
+
+    /* ====== 指紋センサーアニメ ====== */
+    #touchid-section {
+      text-align: center;
+    }
+    .touchid-circle {
+      display: inline-block;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #1a1a1a, #000);
+      border: 3px solid var(--neon-cyan);
+      position: relative;
+      animation: touchidPulse 2s ease-in-out infinite;
+      margin: 20px auto;
+    }
+    @keyframes touchidPulse {
+      0%, 100% {
+        box-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 40px rgba(0,255,255,0.3);
+      }
+      50% {
+        box-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan), 0 0 80px rgba(0,255,255,0.5), 0 0 120px rgba(0,255,255,0.3);
+      }
+    }
+    .fingerprint-lines {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70px; height: 70px;
+    }
+    .fp-line {
+      position: absolute;
+      top: 50%; left: 50%;
+      border: 1.5px solid;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: fpScan 2s ease-in-out infinite;
+    }
+    .fp-line:nth-child(1) { width: 20px; height: 20px; animation-delay: 0s; }
+    .fp-line:nth-child(2) { width: 35px; height: 35px; animation-delay: 0.15s; }
+    .fp-line:nth-child(3) { width: 50px; height: 50px; animation-delay: 0.3s; }
+    .fp-line:nth-child(4) { width: 65px; height: 65px; animation-delay: 0.45s; }
+    @keyframes fpScan {
+      0%, 100% { border-color: rgba(0,255,255,0.8); }
+      50% { border-color: rgba(0,255,255,0.2); }
+    }
+    .touchid-text {
+      color: var(--neon-cyan);
+      font-size: 13px;
+      text-shadow: 0 0 8px var(--neon-cyan);
+      margin-top: 5px;
+    }
+
+    /* ====== カメラセクション ====== */
+    .camera-showcase {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 10px 0;
+    }
+    .fake-photo {
+      width: 120px; height: 120px;
+      border: 2px solid;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .fake-photo:hover { transform: scale(1.1) rotate(3deg); }
+    .fake-photo:nth-child(1) {
+      border-color: #ff6688;
+      background: linear-gradient(135deg, #ff6688, #aa0033, #ff0066);
+    }
+    .fake-photo:nth-child(2) {
+      border-color: #66ffaa;
+      background: linear-gradient(135deg, #003322, #006644, #00ff88);
+    }
+    .fake-photo:nth-child(3) {
+      border-color: #6699ff;
+      background: linear-gradient(135deg, #001133, #003399, #0066ff);
+    }
+    .fake-photo:nth-child(4) {
+      border-color: #ffaa00;
+      background: linear-gradient(135deg, #331100, #996600, #ffcc00);
+    }
+    .photo-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      font-size: 9px;
+      padding: 3px;
+      text-align: center;
+    }
+    .photo-icon {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -60%);
+      font-size: 36px;
+    }
+
+    /* ====== カラーバリエーション ====== */
+    .color-variants {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+    .color-card {
+      width: 100px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .color-swatch {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      margin: 0 auto 8px;
+      border: 3px solid rgba(255,255,255,0.3);
+      animation: swatchSpin 4s linear infinite;
+      transition: transform 0.3s;
+    }
+    .color-card:hover .color-swatch {
+      animation: none;
+      transform: scale(1.2);
+      border-color: white;
+    }
+    @keyframes swatchSpin {
+      0% { box-shadow: 4px 0 15px currentColor; }
+      25% { box-shadow: 0 4px 15px currentColor; }
+      50% { box-shadow: -4px 0 15px currentColor; }
+      75% { box-shadow: 0 -4px 15px currentColor; }
+      100% { box-shadow: 4px 0 15px currentColor; }
+    }
+    .swatch-silver { background: linear-gradient(135deg, #f0f0f0, #a0a0a0, #d0d0d0); color: #a0a0a0; }
+    .swatch-spacegray { background: linear-gradient(135deg, #5a5a5a, #333, #555); color: #555; }
+    .swatch-gold { background: linear-gradient(135deg, #f5d68a, #c8962e, #f0c040); color: #c8962e; }
+    .color-name {
+      font-size: 10px;
+      color: #ccc;
+    }
+
+    /* ====== A7チップアニメ ====== */
+    .chip-visual {
+      width: 100px; height: 100px;
+      margin: 16px auto;
+      background: linear-gradient(135deg, #222, #444, #222);
+      border: 2px solid #666;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chip-text {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 11px;
+      color: var(--neon-green);
+      text-shadow: 0 0 8px var(--neon-green);
+      z-index: 1;
+    }
+    .chip-corner {
+      position: absolute;
+      width: 8px; height: 8px;
+      background: #888;
+    }
+    .chip-corner:nth-child(1) { top: -2px; left: -2px; }
+    .chip-corner:nth-child(2) { top: -2px; right: -2px; }
+    .chip-corner:nth-child(3) { bottom: -2px; left: -2px; }
+    .chip-corner:nth-child(4) { bottom: -2px; right: -2px; }
+    .chip-pin {
+      position: absolute;
+      background: #aaa;
+    }
+    .chip-pin.top, .chip-pin.bottom {
+      width: 6px; height: 14px;
+      top: -14px;
+    }
+    .chip-pin.top { top: -14px; }
+    .chip-pin.bottom { bottom: -14px; top: auto; }
+    .chip-scan {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+      animation: chipScan 1.5s linear infinite;
+    }
+    @keyframes chipScan {
+      0% { top: 0; opacity: 1; }
+      100% { top: 100%; opacity: 0.3; }
+    }
+    .circuit-lines {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+    }
+    .circuit-line {
+      position: absolute;
+      background: rgba(0,255,0,0.2);
+    }
+
+    /* ====== フッター ====== */
+    #footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+      border-top: 3px double var(--neon-pink);
+      font-size: 11px;
+      color: #888;
+    }
+    .footer-rainbow {
+      background: linear-gradient(90deg, #f00, #ff0, #0f0, #0ff, #00f, #f0f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .under-construction {
+      display: inline-block;
+      background: repeating-linear-gradient(
+        45deg,
+        #000,
+        #000 10px,
+        #ffff00 10px,
+        #ffff00 20px
+      );
+      color: #000 !important;
+      font-weight: bold;
+      padding: 4px 12px;
+      font-size: 11px;
+      margin: 8px 0;
+      animation: constructionBlink 1s step-end infinite;
+    }
+    @keyframes constructionBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* ====== スクロールトップボタン ====== */
+    #scroll-top {
+      position: fixed;
+      bottom: 20px; right: 20px;
+      width: 50px; height: 50px;
+      background: var(--neon-pink);
+      color: #fff;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      font-family: monospace;
+      z-index: 999;
+      animation: scrollBtnAnim 1s ease-in-out infinite alternate;
+      box-shadow: 0 0 15px var(--neon-pink);
+    }
+    @keyframes scrollBtnAnim {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); box-shadow: 0 0 25px var(--neon-pink); }
+    }
+
+    /* ====== クリックエフェクト ====== */
+    .click-spark {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      animation: sparkFade 0.6s ease-out forwards;
+      font-size: 18px;
+    }
+    @keyframes sparkFade {
+      0% { opacity: 1; transform: scale(1) translateY(0); }
+      100% { opacity: 0; transform: scale(2) translateY(-30px); }
+    }
+
+    /* ====== NEW! バッジ ====== */
+    .badge-new {
+      display: inline-block;
+      background: #ff0000;
+      color: white;
+      font-size: 9px;
+      padding: 2px 6px;
+      font-weight: bold;
+      animation: badgePulse 0.5s ease-in-out infinite alternate;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+    @keyframes badgePulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.15); }
+    }
+
+    /* ====== プログレスバー ====== */
+    .progress-container {
+      margin: 8px 0;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #bbb;
+      margin-bottom: 3px;
+    }
+    .progress-bar-bg {
+      background: #222;
+      border: 1px solid #444;
+      height: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      position: relative;
+      animation: progressLoad 2s ease-out forwards;
+    }
+    @keyframes progressLoad {
+      0% { width: 0%; }
+    }
+    .progress-bar-fill::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.1) 0px,
+        rgba(255,255,255,0.1) 10px,
+        transparent 10px,
+        transparent 20px
+      );
+      animation: progressShine 1s linear infinite;
+    }
+    @keyframes progressShine {
+      0% { transform: translateX(-20px); }
+      100% { transform: translateX(20px); }
+    }
+
+    /* ====== レスポンシブ ====== */
+    @media (max-width: 600px) {
+      .spec-table td:first-child { width: 45%; font-size: 11px; }
+      .spec-table td:last-child { font-size: 11px; }
+      .iphone-frame { width: 130px; height: 235px; }
+      .iphone-screen { top: 32px; left: 11px; right: 11px; bottom: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 星空 -->
+<div id="stars-container"></div>
+
+<div id="wrapper">
+
+  <!-- ヘッダー -->
+  <div id="header">
+    <div id="site-title">★ iPhone 5s 完全攻略大百科 ★</div>
+    <div style="font-size:12px; color:#aaa; margin-top:6px;">
+      〜 最速・最強・最高の64bitスマートフォン伝説 〜
+    </div>
+    <div style="margin-top:8px; font-size:13px;">
+      <span style="color:#ff0; animation: blink 0.7s step-end infinite; display:inline-block;">★</span>
+      <span style="color:#0ff;">2013年、時代が変わった</span>
+      <span style="color:#ff0; animation: blink 0.7s step-end infinite; display:inline-block;">★</span>
+    </div>
+  </div>
+
+  <!-- カウンター -->
+  <div id="counter-section">
+    <span style="color:#888; font-size:11px;">あなたは</span>
+    <span id="visitor-counter">0014528</span>
+    <span style="color:#888; font-size:11px;">人目のご来訪者です！</span>
+    <br>
+    <span style="font-size:10px; color:#666;">※本日: <span style="color:#0f0;">42</span>名様がご来訪</span>
+  </div>
+
+  <!-- マーキー1 -->
+  <div class="marquee-wrapper">
+    <span class="marquee-inner">
+      🍎 iPhone 5s 絶賛発売中！！ ★ Touch IDで指紋認証！革命的！！ ★ A7チップで業界初64bit！ ★ カメラが超進化！スローモーション動画！ ★ ゴールドカラー登場！女子にも大人気！！ 🍎 iPhone 5s 絶賛発売中！！ ★ Touch IDで指紋認証！革命的！！ ★
+    </span>
+  </div>
+
+  <!-- ナビ -->
+  <div id="nav">
+    <a class="nav-btn" href="#spec">スペック</a>
+    <a class="nav-btn" href="#touchid">TouchID</a>
+    <a class="nav-btn" href="#camera">カメラ</a>
+    <a class="nav-btn" href="#chip">A7チップ</a>
+    <a class="nav-btn" href="#color">カラー</a>
+  </div>
+
+  <div class="rainbow-bar"></div>
+
+  <!-- ヒーロービジュアル -->
+  <div id="hero" class="section section-pink">
+    <div class="section-title title-pink">iPhone 5s 登場</div>
+    <br>
+
+    <div class="iphone-frame">
+      <div class="iphone-speaker"></div>
+      <div class="iphone-camera"></div>
+      <div class="iphone-screen">
+        <div class="screen-wallpaper">
+          <div class="screen-time" id="screen-clock">--:--</div>
+          <div class="screen-date" id="screen-date">----</div>
+          <div class="screen-icons">
+            <div class="app-icon" style="background:linear-gradient(135deg,#3a7bd5,#00d2ff);"></div>
+            <div class="app-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200);"></div>
+            <div class="app-icon" style="background:linear-gradient(135deg,#11998e,#38ef7d);"></div>
+            <div class="app-icon" style="background:linear-gradient(135deg,#ee0979,#ff6a00);"></div>
+            <div class="app-icon" style="background:linear-gradient(135deg,#4776e6,#8e54e9);"></div>
+            <div class="app-icon" style="background:linear-gradient(135deg,#12c2e9,#c471ed);"></div>
+            <div class="app-icon" style="background:linear-gradient(135deg,#f00,#900);"></div>
+            <div class="app-icon" style="background:linear-gradient(135deg,#0f0,#090);"></div>
+          </div>
+        </div>
+      </div>
+      <div class="iphone-home-btn"></div>
+    </div>
+
+    <br><br>
+    <div style="font-size:13px; line-height:1.9; color:#ddd;">
+      <span style="color:var(--neon-yellow); font-weight:bold; font-size:15px;">iPhone 5s</span>は<br>
+      <span class="blink" style="color:#ff0066;">【史上最も先進的な iPhone】</span><br>
+      として<span style="color:#0ff;">2013年9月20日</span>に登場！<br>
+      <span style="color:#0f0;">指紋認証・64bitチップ・高性能カメラ</span><br>
+      の三本柱で世界を震撼させた伝説の端末！！
+    </div>
+  </div>
+
+  <!-- マーキー2 -->
+  <div class="marquee-wrapper" style="--delay:0s;">
+    <span class="marquee-inner" style="animation-duration:22s; animation-direction:reverse; color:var(--neon-cyan);">
+      ◆ OS: iOS 7（iOS 12まで対応） ◆ CPU: Apple A7（64bit） ◆ RAM: 1GB ◆ ストレージ: 16/32/64GB ◆ ディスプレイ: 4インチ Retina ◆ カメラ: 800万画素 ◆ バッテリー: 1560mAh ◆ 重さ: わずか112g ◆
+    </span>
+  </div>
+
+  <!-- スペックセクション -->
+  <div id="spec" class="section section-yellow">
+    <div class="section-title title-yellow">完全スペック表</div>
+    <span class="badge-new">NEW</span>
+    <br><br>
+    <table class="spec-table">
+      <tr>
+        <td>ディスプレイ</td>
+        <td>4.0インチ Retina IPS液晶<br>1136×640px (326ppi)</td>
+      </tr>
+      <tr>
+        <td>プロセッサ</td>
+        <td class="spec-highlight">Apple A7（64bit）史上初！<br>+ M7モーションコプロセッサ</td>
+      </tr>
+      <tr>
+        <td>RAM</td>
+        <td>1 GB</td>
+      </tr>
+      <tr>
+        <td>ストレージ</td>
+        <td>16 / 32 / 64 GB</td>
+      </tr>
+      <tr>
+        <td>メインカメラ</td>
+        <td class="spec-highlight">800万画素 f/2.2<br>スローモーション120fps対応！！</td>
+      </tr>
+      <tr>
+        <td>フロントカメラ</td>
+        <td>120万画素</td>
+      </tr>
+      <tr>
+        <td>生体認証</td>
+        <td class="spec-highlight">Touch ID（指紋認証センサー）<br>業界初！ホームボタン一体型！！</td>
+      </tr>
+      <tr>
+        <td>バッテリー</td>
+        <td>1,560 mAh<br>通話最大10時間</td>
+      </tr>
+      <tr>
+        <td>通信</td>
+        <td>LTE Cat.4 / Wi-Fi 802.11a/b/g/n<br>Bluetooth 4.0</td>
+      </tr>
+      <tr>
+        <td>サイズ</td>
+        <td>123.8 × 58.6 × 7.6 mm</td>
+      </tr>
+      <tr>
+        <td>重量</td>
+        <td class="spec-highlight">わずか 112 g ！！</td>
+      </tr>
+      <tr>
+        <td>カラー</td>
+        <td>シルバー / スペースグレイ / ゴールド</td>
+      </tr>
+      <tr>
+        <td>OS（発売時）</td>
+        <td>iOS 7</td>
+      </tr>
+      <tr>
+        <td>OS（最終）</td>
+        <td>iOS 12.5.7</td>
+      </tr>
+    </table>
+
+    <div class="rainbow-bar" style="margin-top:14px;"></div>
+
+    <div style="font-size:12px; color:#aaa; line-height:1.8;">
+      ※ iPhone 5より最大<span style="color:#ff0; font-weight:bold;">2倍高速</span>、<br>
+      　 グラフィック性能は最大<span style="color:#0ff; font-weight:bold;">56倍向上</span>！！<br>
+      ※ M7チップで歩数・方位・加速度を<span style="color:#0f0; font-weight:bold;">超省電力</span>で計測！
+    </div>
+  </div>
+
+  <!-- Touch IDセクション -->
+  <div id="touchid" class="section section-cyan">
+    <div class="section-title title-cyan">Touch ID 指紋認証</div>
+    <br>
+    <div id="touchid-section">
+      <div class="touchid-circle">
+        <div class="fingerprint-lines">
+          <div class="fp-line"></div>
+          <div class="fp-line"></div>
+          <div class="fp-line"></div>
+          <div class="fp-line"></div>
+        </div>
+      </div>
+      <div class="touchid-text blink">■ スキャン中... ■</div>
+    </div>
+    <br>
+    <div style="font-size:13px; line-height:2; color:#ddd; text-align:center;">
+      <span style="color:var(--neon-cyan); font-size:16px; font-weight:bold;">史上初！</span>
+      ホームボタンに指紋センサー内蔵！<br>
+      わずか<span style="color:#ff0; font-weight:bold;">0.8秒</span>でロック解除！！<br>
+      <br>
+      指紋の読み取り精度は<span style="color:#0f0; font-weight:bold;">50,000分の1</span>の誤認識率！<br>
+      つまり<span class="blink" style="color:#f0f;">超・超・超安全！！！</span>
+    </div>
+
+    <div class="rainbow-bar" style="margin:14px 0;"></div>
+
+    <div style="font-size:12px; color:#888; text-align:center; line-height:2;">
+      ✔ ロック解除がラクラク！パスコード不要！<br>
+      ✔ App Store の購入も指紋一本で完了！<br>
+      ✔ 指紋データはA7チップ内の<span style="color:#0ff;">Secure Enclave</span>に暗号化保存！<br>
+      ✔ Appleのサーバーには<span style="color:#f00; font-weight:bold;">一切送信されない！</span>超安心！！
+    </div>
+  </div>
+
+  <!-- カメラセクション -->
+  <div id="camera" class="section section-green">
+    <div class="section-title title-green">カメラ性能</div>
+    <span class="badge-new">NEW</span>
+    <br><br>
+
+    <div style="text-align:center; margin-bottom:14px;">
+      <span style="color:var(--neon-green); font-size:15px; font-weight:bold;">
+        800万画素 ƒ/2.2 開口部
+      </span><br>
+      <span style="font-size:12px; color:#aaa;">センサーサイズ大型化 × ISP高速化</span>
+    </div>
+
+    <div class="camera-showcase">
+      <div class="fake-photo">
+        <span class="photo-icon">🌅</span>
+        <div class="photo-label">風景</div>
+      </div>
+      <div class="fake-photo">
+        <span class="photo-icon">🌳</span>
+        <div class="photo-label">自然</div>
+      </div>
+      <div class="fake-photo">
+        <span class="photo-icon">🌃</span>
+        <div class="photo-label">夜景</div>
+      </div>
+      <div class="fake-photo">
+        <span class="photo-icon">🐾</span>
+        <div class="photo-label">動物</div>
+      </div>
+    </div>
+
+    <div class="rainbow-bar"></div>
+
+    <div style="font-size:12px; line-height:2.2; color:#ddd;">
+      <div class="progress-container">
+        <div class="progress-label"><span>明るさ</span><span>95%</span></div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" style="width:95%; background:linear-gradient(90deg,#ffff00,#ffaa00);"></div>
+        </div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>色再現性</span><span>92%</span></div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" style="width:92%; background:linear-gradient(90deg,#00ff88,#00aaff);"></div>
+        </div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>動体撮影</span><span>88%</span></div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" style="width:88%; background:linear-gradient(90deg,#ff66cc,#aa00ff);"></div>
+        </div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>スローモーション</span><span>120fps !!</span></div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" style="width:100%; background:linear-gradient(90deg,#00ffff,#0066ff);"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px; font-size:12px; color:#aaa; text-align:center;">
+      連写最大<span style="color:#0f0; font-weight:bold;">10枚/秒</span>！！<br>
+      自動的にベストショットを選んでくれる<span style="color:#ff0;">「バーストモード」</span>搭載！！
+    </div>
+  </div>
+
+  <!-- A7チップセクション -->
+  <div id="chip" class="section section-orange">
+    <div class="section-title title-orange">Apple A7 チップ</div>
+    <br>
+
+    <div style="text-align:center;">
+      <div class="chip-visual">
+        <div class="chip-corner"></div>
+        <div class="chip-corner"></div>
+        <div class="chip-corner"></div>
+        <div class="chip-corner"></div>
+        <div class="circuit-lines"></div>
+        <div class="chip-scan"></div>
+        <div class="chip-text">A7</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:10px;">
+      <span style="color:var(--neon-orange); font-size:16px; font-weight:bold; text-shadow:0 0 10px var(--neon-orange);">
+        世界初！スマートフォン用64bitチップ！！
+      </span>
+    </div>
+
+    <div class="rainbow-bar" style="margin:14px 0;"></div>
+
+    <div style="font-size:12px; line-height:2.2; color:#ddd;">
+      <div class="progress-container">
+        <div class="progress-label"><span>CPU性能（対iPhone 5）</span><span>2倍速</span></div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" style="width:80%; background:linear-gradient(90deg,#ff6600,#ffcc00);"></div>
+        </div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>GPU性能（対iPhone 5）</span><span>56倍速</span></div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" style="width:99%; background:linear-gradient(90deg,#ff0000,#ff9900);"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px; font-size:12px; color:#aaa; line-height:2; text-align:center;">
+      トランジスタ数：<span style="color:#ff0; font-weight:bold;">10億個</span>！！<br>
+      28nmプロセス採用で超省電力！<br>
+      M7コプロセッサが動作・加速度・方位センサーを<br>
+      <span style="color:#0f0;">24時間省電力でバックグラウンド処理！</span><br>
+      フィットネスアプリが超快適に！！
+    </div>
+  </div>
+
+  <!-- カラーバリエーション -->
+  <div id="color" class="section section-pink">
+    <div class="section-title title-pink">カラーバリエーション</div>
+    <br>
+
+    <div class="color-variants">
+      <div class="color-card">
+        <div class="color-swatch swatch-silver"></div>
+        <div class="color-name">シルバー<br>Silver</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-spacegray"></div>
+        <div class="color-name">スペースグレイ<br>Space Gray</div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch swatch-gold"></div>
+        <div class="color-name">ゴールド<br><span class="blink" style="color:gold;">★NEW★</span><br>Gold</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; font-size:12px; color:#aaa; line-height:2;">
+      <span class="blink" style="color:#ffd700; font-size:14px; font-weight:bold;">ゴールドは iPhone 5s 初登場！！</span><br>
+      発売直後は<span style="color:#f00; font-weight:bold;">品薄が続出！！</span><br>
+      転売ヤーが暗躍する社会現象に！！！
+    </div>
+  </div>
+
+  <!-- マーキー3 -->
+  <div class="marquee-wrapper">
+    <span class="marquee-inner" style="animation-duration:25s; color:var(--neon-green);">
+      ☆ iPhone 5s を愛する同志よ集まれ！ ☆ このサイトはiPhone 5sの偉大な功績を後世に伝えるために作られました ☆ 64bitの夢は終わらない ☆ Touch IDよ永遠に ☆ A7チップに捧ぐ ☆
+    </span>
+  </div>
+
+  <!-- まとめ -->
+  <div class="section section-cyan">
+    <div class="section-title title-cyan">結論：iPhone 5s は神機である</div>
+    <br>
+    <div style="font-size:13px; line-height:2.2; color:#ddd; text-align:center;">
+      ✨ <span style="color:var(--neon-yellow); font-weight:bold;">64bit CPU</span> でコンピューティングの未来を切り開いた<br>
+      👆 <span style="color:var(--neon-cyan); font-weight:bold;">Touch ID</span> でスマホセキュリティを革命した<br>
+      📷 <span style="color:var(--neon-green); font-weight:bold;">スローモーション</span> カメラで映像表現を変えた<br>
+      🥇 <span style="color:var(--neon-orange); font-weight:bold;">M7コプロセッサ</span> でウェアラブル時代の先鞭をつけた<br>
+      <br>
+      <span class="blink" style="color:#ff0066; font-size:16px; font-weight:bold;">
+        iPhone 5s は永遠に語り継がれる伝説の端末だ！！！
+      </span>
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <div id="footer">
+    <div class="under-construction">🚧 このサイトは永遠に工事中です 🚧</div>
+    <br>
+    <div class="footer-rainbow">iPhone 5s Fan Site — Since 2013</div>
+    <br>
+    <div style="font-size:10px; color:#555; line-height:2;">
+      最終更新：2014年3月1日（たぶん）<br>
+      推奨環境：Internet Explorer 6.0 以上<br>
+      推奨解像度：800×600px<br>
+      <span style="color:#333;">このサイトはリンクフリーです。バナーはご自由にお使いください。</span><br>
+      <br>
+      <span style="color:#ff6600;">※ Apple、iPhone、Touch ID は Apple Inc. の商標です。</span>
+    </div>
+    <br>
+    <div style="font-size:11px; color:#666;">
+      ブラウザの「お気に入り」に追加してね！ ⭐<br>
+      <span class="blink-slow" style="color:#ff0;">▲ ブックマーク推奨 ▲</span>
+    </div>
+  </div>
+
+</div><!-- /wrapper -->
+
+<!-- トップへ戻るボタン -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+
+<script>
+  // ====== 星空生成 ======
+  const starsContainer = document.getElementById('stars-container');
+  for (let i = 0; i < 120; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    star.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      top: ${Math.random() * 100}%;
+      left: ${Math.random() * 100}%;
+      --dur: ${Math.random() * 3 + 1}s;
+    `;
+    starsContainer.appendChild(star);
+  }
+
+  // ====== 画面内の時計 ======
+  function updateClock() {
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2,'0');
+    const m = String(now.getMinutes()).padStart(2,'0');
+    const el = document.getElementById('screen-clock');
+    const de = document.getElementById('screen-date');
+    if (el) el.textContent = h + ':' + m;
+    if (de) {
+      const days = ['日','月','火','水','木','金','土'];
+      de.textContent = `${now.getMonth()+1}月${now.getDate()}日（${days[now.getDay()]}）`;
+    }
+  }
+  updateClock();
+  setInterval(updateClock, 60000);
+
+  // ====== クリックスパーク ======
+  const sparks = ['✨','⭐','💥','★','🌟','💫','⚡'];
+  document.addEventListener('click', function(e) {
+    const el = document.createElement('div');
+    el.className = 'click-spark';
+    el.textContent = sparks[Math.floor(Math.random() * sparks.length)];
+    el.style.left = (e.clientX - 10) + 'px';
+    el.style.top = (e.clientY - 10) + 'px';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 700);
+  });
+
+  // ====== カウンターカウントアップ演出 ======
+  (function() {
+    const el = document.getElementById('visitor-counter');
+    const target = 14528;
+    let current = 14500;
+    const interval = setInterval(() => {
+      current++;
+      el.textContent = String(current).padStart(7, '0');
+      if (current >= target) clearInterval(interval);
+    }, 60);
+  })();
+
+  // ====== チップ回路線 ======
+  const circuit = document.querySelector('.circuit-lines');
+  if (circuit) {
+    for (let i = 0; i < 6; i++) {
+      const line = document.createElement('div');
+      line.className = 'circuit-line';
+      if (i % 2 === 0) {
+        line.style.cssText = `
+          width: 2px;
+          height: ${10 + Math.random() * 40}%;
+          top: ${Math.random() * 60}%;
+          left: ${10 + Math.random() * 80}%;
+        `;
+      } else {
+        line.style.cssText = `
+          width: ${10 + Math.random() * 40}%;
+          height: 2px;
+          top: ${10 + Math.random() * 80}%;
+          left: ${Math.random() * 60}%;
+        `;
+      }
+      circuit.appendChild(line);
+    }
+  }
+
+  // ====== ナビスムーズスクロール ======
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
